@@ -2,7 +2,7 @@ using System;
 
 namespace AyProgress
 {
-    public class State
+    public class StateItem
     {
         public string Key { get; set; }
         public double Value { get; set; }

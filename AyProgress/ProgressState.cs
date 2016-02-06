@@ -9,7 +9,7 @@ namespace AyProgress
     public class ProgressState
     {
         private readonly string _fileName;
-        private IList<State> _states;
+        private IList<StateItem> _items;
 
         public ProgressState(string fileName)
         {
@@ -17,40 +17,33 @@ namespace AyProgress
             Load();
         }
 
-        public event EventHandler<ProgressEventArgs> ProgressChanged;
-
-        public void OnProgressChanged(ProgressContext context, ProgressEventArgs e)
-        {
-            ProgressChanged?.Invoke(context, e);
-        }
-
         private void Load()
         {
             if (File.Exists(_fileName))
             {
-                _states = JsonConvert.DeserializeObject<List<State>>(File.ReadAllText(_fileName));
+                _items = JsonConvert.DeserializeObject<List<StateItem>>(File.ReadAllText(_fileName));
             }
             else
             {
-                _states = new List<State>();
+                _items = new List<StateItem>();
             }
         }
 
         public void Save()
         {
-            var json = JsonConvert.SerializeObject(_states, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(_items, Formatting.Indented);
             File.WriteAllText(_fileName, json);
         }
 
 
-        public IList<State> GetStates(string key)
+        public IList<StateItem> GetStates(string key)
         {
-            return _states.Where(o => o.Key == key).OrderBy(o => o.Value).ToList();
+            return _items.Where(o => o.Key == key).OrderBy(o => o.Value).ToList();
         }
 
-        public void Add(State state)
+        public void Add(StateItem stateItem)
         {
-            _states.Add(state);
+            _items.Add(stateItem);
         }
     }
 }
