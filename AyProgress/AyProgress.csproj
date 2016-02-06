@@ -47,8 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DoubleProgressAdapter.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Progress.cs" />
+    <Compile Include="ProgressScope.cs" />
+    <Compile Include="ProgressAdapter.cs" />
     <Compile Include="ProgressContext.cs" />
     <Compile Include="ProgressReportedEventArgs.cs" />
     <Compile Include="ProgressState.cs" />

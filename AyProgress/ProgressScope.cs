@@ -2,7 +2,7 @@ using System;
 
 namespace AyProgress
 {
-    public class Progress
+    public class ProgressScope
     {
         private static readonly ProgressState State = new ProgressState("state.json");
         private static ProgressContext _current;

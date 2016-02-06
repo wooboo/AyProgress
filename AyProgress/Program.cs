@@ -7,28 +7,28 @@ namespace AyProgress
     {
         private static void Main(string[] args)
         {
-            Progress.ProgressReported += Progress_ProgressReported;
-            using (Progress.Start("1", 0, 1))
+            ProgressScope.ProgressReported += Progress_ProgressReported;
+            using (ProgressScope.Start("1", 0, 1))
             {
                 Thread.Sleep(1000);
-                Progress.Report(0.1);
+                ProgressScope.Report(0.1);
                 Thread.Sleep(1000);
-                Progress.Report(0.2);
+                ProgressScope.Report(0.2);
                 Thread.Sleep(1000);
-                using (Progress.Start("2", 0.3, 0.45))
+                using (ProgressScope.Start("2", 0.1, 0.7))
                 {
                     Thread.Sleep(1000);
-                    Progress.Report(0.33);
+                    ProgressScope.Report(0.33);
                     Thread.Sleep(1000);
-                    Progress.Report(0.66);
+                    ProgressScope.Report(0.66);
                     Thread.Sleep(1000);
                 }
                 Thread.Sleep(1000);
-                Progress.Report(0.6);
+                ProgressScope.Report(0.6);
                 Thread.Sleep(1000);
-                Progress.Report(0.8);
+                ProgressScope.Report(0.8);
             }
-            Progress.ProgressReported -= Progress_ProgressReported;
+            ProgressScope.ProgressReported -= Progress_ProgressReported;
             Console.ReadKey();
         }
 
