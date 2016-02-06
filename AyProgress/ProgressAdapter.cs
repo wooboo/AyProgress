@@ -2,7 +2,7 @@ using System;
 
 namespace AyProgress
 {
-    public abstract class ProgressAdapter<T>
+    public abstract class ProgressAdapter<T> : IDisposable
     {
         private readonly Func<ProgressReportedEventArgs, bool> _filter;
         protected readonly IProgress<T> Progress;
@@ -15,7 +15,12 @@ namespace AyProgress
         {
             Progress = progress;
             _filter = filter ?? (p => true);
-            AyProgress.ProgressScope.ProgressReported += Progress_ProgressReported;
+            ProgressScope.ProgressReported += Progress_ProgressReported;
+        }
+
+        public void Dispose()
+        {
+            ProgressScope.ProgressReported -= Progress_ProgressReported;
         }
 
         private void Progress_ProgressReported(object sender, ProgressReportedEventArgs e)
