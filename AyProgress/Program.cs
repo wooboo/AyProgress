@@ -7,7 +7,10 @@ namespace AyProgress
     {
         private static void Main(string[] args)
         {
-            ProgressScope.ProgressReported += Progress_ProgressReported;
+
+            Console.Write("Performing some task... ");
+            using (var progress = new ProgressBar())
+            using (new DoubleProgressAdapter(progress, "1"))
             using (ProgressScope.Start("1", 0, 1))
             {
                 Thread.Sleep(1000);
@@ -15,7 +18,7 @@ namespace AyProgress
                 Thread.Sleep(1000);
                 ProgressScope.Report(0.2);
                 Thread.Sleep(1000);
-                using (ProgressScope.Start("2", 0.1, 0.7))
+                using (ProgressScope.Start("2", 0.3, 0.45))
                 {
                     Thread.Sleep(1000);
                     ProgressScope.Report(0.33);
@@ -28,7 +31,8 @@ namespace AyProgress
                 Thread.Sleep(1000);
                 ProgressScope.Report(0.8);
             }
-            ProgressScope.ProgressReported -= Progress_ProgressReported;
+            Console.WriteLine("Done.");
+
             Console.ReadKey();
         }
 
