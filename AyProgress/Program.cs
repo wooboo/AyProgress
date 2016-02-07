@@ -8,14 +8,13 @@ namespace AyProgress
     {
         private static void Main(string[] args)
         {
-
-            Console.Write("Performing some task... ");
-            using (var progress = new ProgressBar<SimpleProgressInfo>(o=>$"{{percent}}{{spinner}}╢{{bar}}╟"))
+            Console.WriteLine("Performing some task... ");
+            using (var progress = new ProgressBar<SimpleProgressInfo>())
             using (new DoubleProgressAdapter(progress, "1"))
-            using (ProgressScope.Start("1", 0, 1))
+            using (ProgressScope.Start("1", 0, 1, "Starting"))
             {
                 Thread.Sleep(1000);
-                ProgressScope.Report(0.1);
+                ProgressScope.Report(0.1, "One");
                 Thread.Sleep(1000);
                 ProgressScope.Report(0.2);
                 Thread.Sleep(1000);
@@ -24,11 +23,11 @@ namespace AyProgress
                     Thread.Sleep(1000);
                     ProgressScope.Report(0.33);
                     Thread.Sleep(1000);
-                    ProgressScope.Report(0.66);
+                    ProgressScope.Report(0.66, "tu");
                     Thread.Sleep(1000);
                 }
                 Thread.Sleep(1000);
-                ProgressScope.Report(0.6);
+                ProgressScope.Report(0.6, "Almost");
                 Thread.Sleep(1000);
                 ProgressScope.Report(0.8);
                 Thread.Sleep(1000);

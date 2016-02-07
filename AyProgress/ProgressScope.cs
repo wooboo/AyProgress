@@ -9,11 +9,11 @@ namespace AyProgress
 
         public static event EventHandler<ProgressReportedEventArgs> ProgressReported;
 
-        public static ProgressContext Start(string key, double min, double max)
+        public static ProgressContext Start(string key, double min, double max, string text = null)
         {
             _current = new ProgressContext(State, key, _current, min, max, ReturnParent);
             _current.ProgressReported += OnProgressReported;
-            _current.Report(0);
+            _current.Report(0, text);
             return _current;
         }
 
@@ -25,9 +25,9 @@ namespace AyProgress
             State.Save();
         }
 
-        public static void Report(double value)
+        public static void Report(double value, string text = null)
         {
-            _current.Report(value);
+            _current.Report(value, text);
         }
 
         private static void OnProgressReported(object sender, ProgressReportedEventArgs e)

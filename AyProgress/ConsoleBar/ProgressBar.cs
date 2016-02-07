@@ -12,6 +12,7 @@ namespace AyProgress.ConsoleBar
         private readonly char _empty;
         private readonly char _filled;
         private readonly Func<T, string> _format;
+        private readonly int _textLength;
         private readonly string animation;
         private readonly TimeSpan animationInterval = TimeSpan.FromSeconds(1.0/8);
         private readonly int blockCount;
@@ -23,14 +24,16 @@ namespace AyProgress.ConsoleBar
         private string currentText = string.Empty;
         private bool disposed;
 
-        public ProgressBar(Func<T, string> format=null, string animation = @"▌▀▐▄", char empty = '░', char filled = '█',
-            int blockCount = 40)
+        public ProgressBar(Func<T, string> format = null, string animation = @"▌▀▐▄", char empty = '░',
+            char filled = '█',
+            int blockCount = 30, int textLength = 30)
         {
             this.animation = animation;
             _empty = empty;
             _filled = filled;
             this.blockCount = blockCount;
-            _format = format?? (o=>$"{{percent}}{{spinner}}╢{{bar}}╟");
+            _textLength = textLength;
+            _format = format ?? (o => $"{{text}} {{percent}} {{spinner}}╢{{bar}}╟ {{time}}");
             Console.OutputEncoding = Encoding.Unicode;
 
             timer = new Timer(TimerHandler);
@@ -87,9 +90,30 @@ namespace AyProgress.ConsoleBar
             var bar =
                 $"{new string(_filled, progressBlockCount)}{new string(_empty, blockCount - progressBlockCount)}";
             var spinner = animation[animationIndex++%animation.Length];
-            var text = template.Replace("{bar}", bar).Replace("{spinner}", spinner.ToString()).Replace("{percent}",
-                $"{percent,3}%");
+            var text = template
+                .Replace("{bar}", bar)
+                .Replace("{spinner}", spinner.ToString())
+                .Replace("{percent}", $"{percent,3}%")
+                .Replace("{time}", FormatTimeLeft(progressInfo.TimeToFinish))
+                .Replace("{text}", this.FormatText(progressInfo.Text, _textLength));
             return text;
+        }
+
+        private static string FormatTimeLeft(TimeSpan span)
+        {
+            var minutes = (int)Math.Abs(span.TotalMinutes);
+            var seconds = Math.Abs(span.Seconds);
+            if (span < TimeSpan.Zero)
+            {
+                return $"{minutes,3}:{seconds:00} overdue";
+            }
+            return $"{minutes,3}:{seconds:00} left";
+
+        }
+
+        private string FormatText(string text, int length)
+        {
+            return (text + "                                          ").Substring(0, length);
         }
 
         private void UpdateText(string text)

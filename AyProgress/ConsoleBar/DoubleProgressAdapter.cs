@@ -15,7 +15,7 @@ namespace AyProgress.ConsoleBar
 
         protected override void Report(ProgressReportedEventArgs e)
         {
-            Progress.Report(new SimpleProgressInfo(e.Value));
+            Progress.Report(new SimpleProgressInfo(e.Value, e.Text, e.TimeToFinish));
         }
     }
 }

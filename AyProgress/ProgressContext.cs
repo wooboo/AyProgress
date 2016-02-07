@@ -26,7 +26,7 @@ namespace AyProgress
         public double Min { get; }
         public double Current { get; private set; }
         public DateTime ReportTime { get; private set; }
-
+        public string Text { get; private set; }
         public string Key { get; }
         public ProgressContext Parent { get; }
         public DateTime Start { get; }
@@ -43,16 +43,21 @@ namespace AyProgress
             ProgressReported?.Invoke(this, e);
         }
 
-        public void Report(double value)
+        public void Report(double value, string text = null)
         {
             Current = value;
             ReportTime = DateTime.Now;
+            if (text != null)
+            {
+                Text = text;
+            }
+
             TimeSpan timeToFinish;
             if (TryGetTimeToFinish(value, out timeToFinish))
             {
             }
-            Parent?.Report(Min + (Max - Min)*value);
-            OnProgressChanged(new ProgressReportedEventArgs(Key, value, timeToFinish));
+            Parent?.Report(Min + (Max - Min)*value, Text);
+            OnProgressChanged(new ProgressReportedEventArgs(Key, value, timeToFinish, Text));
         }
 
         private bool TryGetTimeToFinish(double value, out TimeSpan t)
