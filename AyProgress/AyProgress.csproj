@@ -47,15 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DoubleProgressAdapter.cs" />
+    <Compile Include="ConsoleBar\DoubleProgressAdapter.cs" />
+    <Compile Include="ConsoleBar\IProgressInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="ProgressBar.cs" />
+    <Compile Include="ConsoleBar\ProgressBar.cs" />
     <Compile Include="ProgressScope.cs" />
     <Compile Include="ProgressAdapter.cs" />
     <Compile Include="ProgressContext.cs" />
     <Compile Include="ProgressReportedEventArgs.cs" />
     <Compile Include="ProgressState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ConsoleBar\SimpleProgressInfo.cs" />
     <Compile Include="StateItem.cs" />
   </ItemGroup>
   <ItemGroup>

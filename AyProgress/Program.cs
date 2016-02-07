@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using AyProgress.ConsoleBar;
 
 namespace AyProgress
 {
@@ -9,7 +10,7 @@ namespace AyProgress
         {
 
             Console.Write("Performing some task... ");
-            using (var progress = new ProgressBar())
+            using (var progress = new ProgressBar<SimpleProgressInfo>(o=>$"{{percent}}{{spinner}}╢{{bar}}╟"))
             using (new DoubleProgressAdapter(progress, "1"))
             using (ProgressScope.Start("1", 0, 1))
             {
@@ -30,6 +31,7 @@ namespace AyProgress
                 ProgressScope.Report(0.6);
                 Thread.Sleep(1000);
                 ProgressScope.Report(0.8);
+                Thread.Sleep(1000);
             }
             Console.WriteLine("Done.");
 
