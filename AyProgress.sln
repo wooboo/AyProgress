@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AyProgress", "AyProgress\AyProgress.csproj", "{639F67FF-8E62-4A53-B704-FAC8BB679586}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AyProgress.CLI", "AyProgress.CLI\AyProgress.CLI.csproj", "{0FA08EAB-8B1C-470E-ACF0-11B9C8B26680}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{639F67FF-8E62-4A53-B704-FAC8BB679586}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{639F67FF-8E62-4A53-B704-FAC8BB679586}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{639F67FF-8E62-4A53-B704-FAC8BB679586}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FA08EAB-8B1C-470E-ACF0-11B9C8B26680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FA08EAB-8B1C-470E-ACF0-11B9C8B26680}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FA08EAB-8B1C-470E-ACF0-11B9C8B26680}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FA08EAB-8B1C-470E-ACF0-11B9C8B26680}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

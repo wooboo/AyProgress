@@ -2,7 +2,7 @@
 using System.Threading;
 using AyProgress.ConsoleBar;
 
-namespace AyProgress
+namespace AyProgress.CLI
 {
     internal class Program
     {
@@ -35,17 +35,6 @@ namespace AyProgress
             Console.WriteLine("Done.");
 
             Console.ReadKey();
-        }
-
-        private static void Progress_ProgressReported(object sender, ProgressReportedEventArgs e)
-        {
-            if (e.Key == "1")
-            {
-                var context = (ProgressContext) sender;
-
-                Console.WriteLine(
-                    $"key: {context.Key}\tvalue: {e.Value:0.000}\tto finish:{e.TimeToFinish}");
-            }
         }
     }
 }

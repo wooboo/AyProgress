@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{639F67FF-8E62-4A53-B704-FAC8BB679586}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{0FA08EAB-8B1C-470E-ACF0-11B9C8B26680}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AyProgress</RootNamespace>
-    <AssemblyName>AyProgress</AssemblyName>
+    <RootNamespace>AyProgress.CLI</RootNamespace>
+    <AssemblyName>AyProgress.CLI</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,14 +32,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,28 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleBar\DoubleProgressAdapter.cs" />
-    <Compile Include="ConsoleBar\IProgressInfo.cs" />
-    <Compile Include="ConsoleBar\ProgressBar.cs" />
-    <Compile Include="ProgressScope.cs" />
-    <Compile Include="ProgressAdapter.cs" />
-    <Compile Include="ProgressContext.cs" />
-    <Compile Include="ProgressReportedEventArgs.cs" />
-    <Compile Include="ProgressState.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ConsoleBar\SimpleProgressInfo.cs" />
-    <Compile Include="StateItem.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AyProgress\AyProgress.csproj">
+      <Project>{639f67ff-8e62-4a53-b704-fac8bb679586}</Project>
+      <Name>AyProgress</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
