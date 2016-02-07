@@ -63,6 +63,7 @@
     <Compile Include="StateItem.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AyProgress.nuspec" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
