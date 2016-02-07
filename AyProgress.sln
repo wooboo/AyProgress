@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AyProgress", "AyProgress\Ay
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AyProgress.CLI", "AyProgress.CLI\AyProgress.CLI.csproj", "{0FA08EAB-8B1C-470E-ACF0-11B9C8B26680}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{2DC8F557-850B-4767-806A-AC91E09118C3}"
+	ProjectSection(SolutionItems) = preProject
+		commands.json = commands.json
+		nuget.exe = nuget.exe
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

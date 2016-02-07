@@ -1,0 +1,9 @@
+{
+  "commands": {
+    "Package": {
+      "fileName": "cmd.exe",
+      "workingDirectory": ".",
+      "arguments": "/c nuget.exe pack -sym .\\AyProgress\\AyProgress.csproj"
+    },
+  }
+}
