@@ -5,5 +5,10 @@
       "workingDirectory": ".",
       "arguments": "/c nuget.exe pack -sym .\\AyProgress\\AyProgress.csproj"
     },
+    "Publish": {
+      "fileName": "powershell.exe",
+      "workingDirectory": ".",
+      "arguments": "-ExecutionPolicy Bypass -File Publish.ps1"
+    }
   }
 }
